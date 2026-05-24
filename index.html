@@ -12,7 +12,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:sans-serif;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 body{
@@ -21,50 +21,140 @@ overflow:hidden;
 color:white;
 }
 
+/* =========================
+SPACE
+========================= */
+
 .screen{
 width:100vw;
 height:100vh;
+position:relative;
+overflow:hidden;
+background:
+radial-gradient(circle at center, #111 0%, #000 70%);
+}
+
+/* 星 */
+
+.star{
 position:absolute;
-top:0;
-left:0;
+background:white;
+border-radius:50%;
+opacity:.8;
+animation:blink 4s infinite;
+}
+
+.star:nth-child(1){
+width:2px;
+height:2px;
+top:10%;
+left:20%;
+}
+
+.star:nth-child(2){
+width:3px;
+height:3px;
+top:40%;
+left:80%;
+animation-delay:1s;
+}
+
+.star:nth-child(3){
+width:2px;
+height:2px;
+top:70%;
+left:15%;
+animation-delay:2s;
+}
+
+.star:nth-child(4){
+width:2px;
+height:2px;
+top:20%;
+left:70%;
+animation-delay:3s;
+}
+
+@keyframes blink{
+0%{opacity:.2;}
+50%{opacity:1;}
+100%{opacity:.2;}
+}
+
+/* =========================
+UNDER LOGO
+========================= */
+
+.logo{
+position:absolute;
+top:60px;
+left:50%;
+transform:translateX(-50%);
+font-size:42px;
+font-weight:200;
+letter-spacing:14px;
+z-index:20;
+}
+
+/* =========================
+CENTER CORE
+========================= */
+
+.core-wrap{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:440px;
+height:440px;
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-background:
-radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
-transition:1s;
 }
 
-.hidden{
-opacity:0;
-pointer-events:none;
-transform:scale(1.1);
+/* 軌道 */
+
+.orbit{
+position:absolute;
+border:1px solid rgba(255,255,255,.08);
+border-radius:50%;
 }
 
-#home{
-opacity:0;
-pointer-events:none;
+.orbit1{
+width:420px;
+height:420px;
+animation:rotate 40s linear infinite;
 }
 
-#home.active{
-opacity:1;
-pointer-events:auto;
+.orbit2{
+width:300px;
+height:300px;
+animation:rotateReverse 28s linear infinite;
 }
+
+.orbit3{
+width:520px;
+height:520px;
+animation:rotate 55s linear infinite;
+}
+
+/* メイン陰陽 */
 
 .yinyang{
-width:260px;
-height:260px;
+position:absolute;
+width:250px;
+height:250px;
 border-radius:50%;
+overflow:hidden;
+
 background:
-radial-gradient(circle at 50% 25%, white 12px, transparent 13px),
-radial-gradient(circle at 50% 75%, black 12px, transparent 13px),
-linear-gradient(to bottom, white 50%, black 50%);
-position:relative;
+linear-gradient(135deg,#ffffff 50%,#000000 50%);
+
 box-shadow:
-0 0 40px rgba(255,255,255,0.1),
-0 0 120px rgba(255,255,255,0.08);
-animation:rotate 18s linear infinite;
+0 0 40px rgba(255,255,255,.1),
+0 0 120px rgba(255,255,255,.08);
+
+animation:rotate 22s linear infinite;
 }
 
 .yinyang::before{
@@ -73,8 +163,8 @@ position:absolute;
 top:0;
 left:50%;
 transform:translateX(-50%);
-width:130px;
-height:130px;
+width:125px;
+height:125px;
 background:black;
 border-radius:50%;
 }
@@ -85,35 +175,121 @@ position:absolute;
 bottom:0;
 left:50%;
 transform:translateX(-50%);
-width:130px;
-height:130px;
+width:125px;
+height:125px;
 background:white;
 border-radius:50%;
 }
 
-h1{
-margin-top:40px;
-font-size:48px;
-font-weight:200;
-letter-spacing:12px;
+/* 陰陽の点 */
+
+.dot-white{
+position:absolute;
+top:62px;
+left:50%;
+transform:translateX(-50%);
+width:28px;
+height:28px;
+background:white;
+border-radius:50%;
+z-index:5;
 }
 
-p{
-margin-top:16px;
-opacity:0.6;
-letter-spacing:4px;
+.dot-black{
+position:absolute;
+bottom:62px;
+left:50%;
+transform:translateX(-50%);
+width:28px;
+height:28px;
+background:black;
+border-radius:50%;
+z-index:5;
+}
+
+/* =========================
+ARTIST PLANETS
+========================= */
+
+.artist{
+position:absolute;
+width:110px;
+height:110px;
+border-radius:50%;
+
+background:
+rgba(255,255,255,.05);
+
+backdrop-filter:blur(24px);
+
+border:1px solid rgba(255,255,255,.08);
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+box-shadow:
+0 0 30px rgba(255,255,255,.08);
+
+transition:.4s;
+
+animation:float 7s ease-in-out infinite;
+}
+
+.artist:hover{
+transform:scale(1.08);
+}
+
+.artist img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+opacity:.7;
+}
+
+.artist-name{
+position:absolute;
+bottom:-32px;
 font-size:13px;
+letter-spacing:1px;
+opacity:.8;
 }
 
-.enter{
-margin-top:40px;
-padding:18px 52px;
-border-radius:999px;
-background:rgba(255,255,255,0.06);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.1);
-font-size:18px;
-letter-spacing:4px;
+.artist1{
+top:40px;
+left:150px;
+}
+
+.artist2{
+right:120px;
+top:160px;
+animation-delay:2s;
+}
+
+.artist3{
+bottom:120px;
+left:120px;
+animation-delay:4s;
+}
+
+.artist4{
+right:160px;
+bottom:90px;
+animation-delay:1s;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-12px);
+}
+100%{
+transform:translateY(0px);
+}
 }
 
 @keyframes rotate{
@@ -125,116 +301,119 @@ transform:rotate(360deg);
 }
 }
 
-.home-title{
-position:absolute;
-top:60px;
-font-size:30px;
-letter-spacing:10px;
-font-weight:200;
+@keyframes rotateReverse{
+from{
+transform:rotate(360deg);
 }
-
-.artist{
-position:absolute;
-width:120px;
-height:120px;
-border-radius:50%;
-background:
-rgba(255,255,255,0.05);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.08);
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-box-shadow:
-0 0 30px rgba(255,255,255,0.08);
-animation:float 6s ease-in-out infinite;
-}
-
-.artist span{
-margin-top:8px;
-font-size:13px;
-opacity:0.8;
-}
-
-.artist1{
-top:22%;
-left:18%;
-}
-
-.artist2{
-top:35%;
-right:16%;
-animation-delay:2s;
-}
-
-.artist3{
-bottom:20%;
-left:28%;
-animation-delay:4s;
-}
-
-.artist4{
-bottom:18%;
-right:20%;
-animation-delay:1s;
-}
-
-@keyframes float{
-0%{
-transform:translateY(0px);
-}
-50%{
-transform:translateY(-18px);
-}
-100%{
-transform:translateY(0px);
+to{
+transform:rotate(0deg);
 }
 }
 
-.center-core{
-width:220px;
-height:220px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-background:
-rgba(255,255,255,0.04);
-backdrop-filter:blur(30px);
-border:1px solid rgba(255,255,255,0.08);
-box-shadow:
-0 0 80px rgba(255,255,255,0.06);
-}
-
-.small-yin{
-width:120px;
-height:120px;
-border-radius:50%;
-background:
-linear-gradient(to bottom, white 50%, black 50%);
-animation:rotate 10s linear infinite;
-}
+/* =========================
+BOTTOM GLASS NAV
+========================= */
 
 .bottom-nav{
 position:absolute;
 bottom:40px;
+left:50%;
+transform:translateX(-50%);
+
 display:flex;
-gap:20px;
+gap:18px;
+
+z-index:20;
 }
 
-.nav-btn{
-width:70px;
-height:70px;
+.nav{
+width:72px;
+height:72px;
 border-radius:50%;
+
 background:
-rgba(255,255,255,0.05);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.08);
+rgba(255,255,255,.05);
+
+backdrop-filter:blur(24px);
+
+border:1px solid rgba(255,255,255,.08);
+
 display:flex;
 justify-content:center;
 align-items:center;
+
 font-size:12px;
+letter-spacing:2px;
+
+box-shadow:
+0 0 30px rgba(255,255,255,.06);
+
+transition:.3s;
+}
+
+.nav:hover{
+transform:scale(1.1);
+background:rgba(255,255,255,.08);
+}
+
+/* =========================
+SIGNAL BUTTON
+========================= */
+
+.signal{
+position:absolute;
+bottom:145px;
+left:50%;
+transform:translateX(-50%);
+
+padding:16px 36px;
+
+border-radius:999px;
+
+background:
+rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+letter-spacing:6px;
+font-size:14px;
+
+box-shadow:
+0 0 30px rgba(255,255,255,.05);
+}
+
+/* =========================
+LIGHT PARTICLES
+========================= */
+
+.light{
+position:absolute;
+border-radius:50%;
+background:rgba(255,255,255,.08);
+filter:blur(20px);
+}
+
+.light1{
+width:180px;
+height:180px;
+top:20%;
+left:10%;
+}
+
+.light2{
+width:240px;
+height:240px;
+right:-40px;
+bottom:10%;
+}
+
+.light3{
+width:120px;
+height:120px;
+top:60%;
+left:60%;
 }
 
 </style>
@@ -242,85 +421,95 @@ font-size:12px;
 
 <body>
 
-<!-- WELCOME -->
+<div class="screen">
 
-<div class="screen" id="welcome">
+<!-- STARS -->
 
-<div class="yinyang"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
 
-<h1>UNDER</h1>
+<!-- LIGHT -->
 
-<p>ENTER THE SIGNAL</p>
+<div class="light light1"></div>
+<div class="light light2"></div>
+<div class="light light3"></div>
 
-<div class="enter" onclick="enterUniverse()">
-宇宙へ入る
-</div>
+<!-- LOGO -->
 
-</div>
-
-<!-- HOME -->
-
-<div class="screen" id="home">
-
-<div class="home-title">
+<div class="logo">
 UNDER
 </div>
 
-<div class="center-core">
-<div class="small-yin"></div>
+<!-- CORE -->
+
+<div class="core-wrap">
+
+<div class="orbit orbit1"></div>
+<div class="orbit orbit2"></div>
+<div class="orbit orbit3"></div>
+
+<div class="yinyang">
+
+<div class="dot-white"></div>
+<div class="dot-black"></div>
+
 </div>
 
+<!-- ARTISTS -->
+
 <div class="artist artist1">
+<div class="artist-name">
 KOWICHI
-<span>Tokyo</span>
+</div>
 </div>
 
 <div class="artist artist2">
+<div class="artist-name">
 Lil Yuto
-<span>Tokyo</span>
+</div>
 </div>
 
 <div class="artist artist3">
+<div class="artist-name">
 VENOM
-<span>Osaka</span>
+</div>
 </div>
 
 <div class="artist artist4">
+<div class="artist-name">
 MARZY
-<span>Tokyo</span>
 </div>
+</div>
+
+</div>
+
+<!-- SIGNAL -->
+
+<div class="signal">
+ENTER THE SIGNAL
+</div>
+
+<!-- NAV -->
 
 <div class="bottom-nav">
 
-<div class="nav-btn">
+<div class="nav">
 探索
 </div>
 
-<div class="nav-btn">
+<div class="nav">
 共鳴
 </div>
 
-<div class="nav-btn">
+<div class="nav">
 空間
 </div>
 
 </div>
 
 </div>
-
-<script>
-
-function enterUniverse(){
-
-document.getElementById("welcome")
-.classList.add("hidden");
-
-document.getElementById("home")
-.classList.add("active");
-
-}
-
-</script>
 
 </body>
 </html>
