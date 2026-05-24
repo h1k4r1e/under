@@ -7,24 +7,49 @@
 <title>UNDER</title>
 
 <style>
-body{
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:sans-serif;
+}
+
+body{
 background:black;
 overflow:hidden;
-font-family:sans-serif;
 color:white;
 }
 
-.space{
-position:relative;
+.screen{
 width:100vw;
 height:100vh;
+position:absolute;
+top:0;
+left:0;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
 background:
-radial-gradient(circle at center, #222 0%, #000 70%);
+radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
+transition:1s;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:scale(1.1);
+}
+
+#home{
+opacity:0;
+pointer-events:none;
+}
+
+#home.active{
+opacity:1;
+pointer-events:auto;
 }
 
 .yinyang{
@@ -37,8 +62,8 @@ radial-gradient(circle at 50% 75%, black 12px, transparent 13px),
 linear-gradient(to bottom, white 50%, black 50%);
 position:relative;
 box-shadow:
-0 0 40px rgba(255,255,255,0.15),
-0 0 120px rgba(255,255,255,0.05);
+0 0 40px rgba(255,255,255,0.1),
+0 0 120px rgba(255,255,255,0.08);
 animation:rotate 18s linear infinite;
 }
 
@@ -68,27 +93,26 @@ border-radius:50%;
 
 h1{
 margin-top:40px;
-letter-spacing:12px;
+font-size:48px;
 font-weight:200;
-font-size:42px;
+letter-spacing:12px;
 }
 
 p{
-opacity:0.7;
-margin-top:10px;
-font-size:14px;
-letter-spacing:3px;
+margin-top:16px;
+opacity:0.6;
+letter-spacing:4px;
+font-size:13px;
 }
 
 .enter{
 margin-top:40px;
-padding:18px 48px;
+padding:18px 52px;
 border-radius:999px;
-background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.06);
 backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.15);
-color:white;
-font-size:16px;
+border:1px solid rgba(255,255,255,0.1);
+font-size:18px;
 letter-spacing:4px;
 }
 
@@ -100,12 +124,127 @@ to{
 transform:rotate(360deg);
 }
 }
+
+.home-title{
+position:absolute;
+top:60px;
+font-size:30px;
+letter-spacing:10px;
+font-weight:200;
+}
+
+.artist{
+position:absolute;
+width:120px;
+height:120px;
+border-radius:50%;
+background:
+rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+box-shadow:
+0 0 30px rgba(255,255,255,0.08);
+animation:float 6s ease-in-out infinite;
+}
+
+.artist span{
+margin-top:8px;
+font-size:13px;
+opacity:0.8;
+}
+
+.artist1{
+top:22%;
+left:18%;
+}
+
+.artist2{
+top:35%;
+right:16%;
+animation-delay:2s;
+}
+
+.artist3{
+bottom:20%;
+left:28%;
+animation-delay:4s;
+}
+
+.artist4{
+bottom:18%;
+right:20%;
+animation-delay:1s;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-18px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+.center-core{
+width:220px;
+height:220px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+rgba(255,255,255,0.04);
+backdrop-filter:blur(30px);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:
+0 0 80px rgba(255,255,255,0.06);
+}
+
+.small-yin{
+width:120px;
+height:120px;
+border-radius:50%;
+background:
+linear-gradient(to bottom, white 50%, black 50%);
+animation:rotate 10s linear infinite;
+}
+
+.bottom-nav{
+position:absolute;
+bottom:40px;
+display:flex;
+gap:20px;
+}
+
+.nav-btn{
+width:70px;
+height:70px;
+border-radius:50%;
+background:
+rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.08);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:12px;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="space">
+<!-- WELCOME -->
+
+<div class="screen" id="welcome">
 
 <div class="yinyang"></div>
 
@@ -113,11 +252,75 @@ transform:rotate(360deg);
 
 <p>ENTER THE SIGNAL</p>
 
-<div class="enter">
+<div class="enter" onclick="enterUniverse()">
 宇宙へ入る
 </div>
 
 </div>
+
+<!-- HOME -->
+
+<div class="screen" id="home">
+
+<div class="home-title">
+UNDER
+</div>
+
+<div class="center-core">
+<div class="small-yin"></div>
+</div>
+
+<div class="artist artist1">
+KOWICHI
+<span>Tokyo</span>
+</div>
+
+<div class="artist artist2">
+Lil Yuto
+<span>Tokyo</span>
+</div>
+
+<div class="artist artist3">
+VENOM
+<span>Osaka</span>
+</div>
+
+<div class="artist artist4">
+MARZY
+<span>Tokyo</span>
+</div>
+
+<div class="bottom-nav">
+
+<div class="nav-btn">
+探索
+</div>
+
+<div class="nav-btn">
+共鳴
+</div>
+
+<div class="nav-btn">
+空間
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function enterUniverse(){
+
+document.getElementById("welcome")
+.classList.add("hidden");
+
+document.getElementById("home")
+.classList.add("active");
+
+}
+
+</script>
 
 </body>
 </html>
