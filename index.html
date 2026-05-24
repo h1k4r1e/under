@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>UNDER</title>
 
@@ -12,189 +12,233 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:sans-serif;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 -webkit-tap-highlight-color:transparent;
 }
 
 body{
 background:#000;
 overflow:hidden;
-color:white;
 height:100vh;
+color:white;
 }
 
-/* 全画面 */
+/* 全体 */
 
-.screen{
+.app{
 position:relative;
 width:100vw;
 height:100vh;
 overflow:hidden;
 
 background:
-radial-gradient(
-circle at center,
-rgba(255,255,255,0.05) 0%,
-#000 70%
-);
+radial-gradient(circle at center,
+rgba(255,255,255,0.06) 0%,
+rgba(0,0,0,1) 65%);
+}
+
+/* 星 */
+
+.stars{
+position:absolute;
+inset:0;
+background-image:
+radial-gradient(white 1px, transparent 1px),
+radial-gradient(white 1px, transparent 1px);
+
+background-size:140px 140px;
+background-position:0 0, 70px 70px;
+
+opacity:0.18;
+}
+
+/* 光 */
+
+.light{
+position:absolute;
+width:700px;
+height:700px;
+border-radius:50%;
+
+left:50%;
+top:42%;
+
+transform:translate(-50%,-50%);
+
+background:
+radial-gradient(circle,
+rgba(255,255,255,0.12),
+transparent 70%);
+
+filter:blur(60px);
 }
 
 /* ロゴ */
 
 .logo{
 position:absolute;
-top:60px;
+
+top:54px;
 left:50%;
 transform:translateX(-50%);
 
 font-size:64px;
 font-weight:200;
-letter-spacing:10px;
+letter-spacing:14px;
 
-z-index:10;
+z-index:20;
 }
 
-/* 軌道 */
+/* orbit */
 
 .orbit{
 position:absolute;
-border-radius:50%;
-border:1px solid rgba(255,255,255,0.06);
-
 left:50%;
 top:50%;
 transform:translate(-50%,-50%);
+
+border-radius:50%;
+border:1px solid rgba(255,255,255,0.06);
 }
 
 .orbit1{
-width:420px;
-height:420px;
+width:560px;
+height:560px;
+opacity:.5;
 }
 
 .orbit2{
-width:320px;
-height:320px;
+width:430px;
+height:430px;
+opacity:.4;
 }
 
 .orbit3{
-width:220px;
-height:220px;
+width:300px;
+height:300px;
+opacity:.3;
 }
 
-/* 中央コア */
+/* 中央 */
 
-.center{
+.core{
 position:absolute;
-top:48%;
+
 left:50%;
+top:46%;
+
 transform:translate(-50%,-50%);
-z-index:2;
-}
 
-/* 陰陽 */
-
-.yinyang{
-position:relative;
-
-width:240px;
-height:240px;
+width:290px;
+height:290px;
 
 border-radius:50%;
+
 overflow:hidden;
 
 background:
 linear-gradient(
 135deg,
-white 0%,
-white 50%,
-black 50%,
-black 100%
+#fff 0%,
+#fff 50%,
+#000 50%,
+#000 100%
 );
 
 box-shadow:
-0 0 80px rgba(255,255,255,0.12),
-0 0 160px rgba(255,255,255,0.04);
+0 0 100px rgba(255,255,255,.16),
+0 0 220px rgba(255,255,255,.05);
 
-animation:spin 20s linear infinite;
+animation:spin 28s linear infinite;
 }
 
-.yinyang::before{
+/* 大円 */
+
+.core::before{
 content:'';
 
 position:absolute;
+
 top:0;
 left:50%;
+
 transform:translateX(-50%);
 
-width:120px;
-height:120px;
+width:145px;
+height:145px;
 
 border-radius:50%;
 
 background:
-linear-gradient(
-180deg,
-rgba(255,255,255,0.9),
-rgba(80,80,80,1)
-);
+radial-gradient(circle at 50% 35%,
+rgba(255,255,255,.95),
+rgba(80,80,80,1));
 }
 
-.yinyang::after{
+.core::after{
 content:'';
 
 position:absolute;
+
 bottom:0;
 left:50%;
+
 transform:translateX(-50%);
 
-width:120px;
-height:120px;
+width:145px;
+height:145px;
 
 border-radius:50%;
 
 background:
-linear-gradient(
-180deg,
-rgba(70,70,70,1),
-rgba(10,10,10,1)
-);
+radial-gradient(circle at 50% 35%,
+rgba(90,90,90,1),
+rgba(8,8,8,1));
 }
 
-/* ドット */
+/* 小ドット */
 
-.dot1{
+.dot-white{
 position:absolute;
-top:54px;
+
+top:66px;
 left:50%;
+
 transform:translateX(-50%);
 
-width:18px;
-height:18px;
+width:24px;
+height:24px;
+
 border-radius:50%;
 background:white;
-z-index:3;
+
+z-index:5;
 }
 
-.dot2{
+.dot-black{
 position:absolute;
-bottom:54px;
+
+bottom:66px;
 left:50%;
+
 transform:translateX(-50%);
 
-width:18px;
-height:18px;
+width:24px;
+height:24px;
+
 border-radius:50%;
 background:black;
-z-index:3;
+
+z-index:5;
 }
 
-/* アーティスト */
+/* artist */
 
 .artist{
 position:absolute;
 
-width:92px;
-height:92px;
+width:110px;
+height:110px;
 
 border-radius:50%;
 
@@ -206,50 +250,70 @@ align-items:center;
 background:
 linear-gradient(
 180deg,
-rgba(255,255,255,0.18),
-rgba(255,255,255,0.04)
+rgba(255,255,255,.22),
+rgba(255,255,255,.03)
 );
 
-backdrop-filter:blur(20px);
+backdrop-filter:blur(22px);
 
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,.08);
 
 box-shadow:
-0 0 40px rgba(255,255,255,0.04);
+0 0 50px rgba(255,255,255,.05);
 
-z-index:5;
+z-index:20;
+
+animation:float 8s ease-in-out infinite;
+}
+
+.artist::before{
+content:'';
+
+position:absolute;
+inset:0;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle at 30% 20%,
+rgba(255,255,255,.35),
+transparent 60%);
 }
 
 .artist .name{
-font-size:14px;
+font-size:15px;
+letter-spacing:1px;
 }
 
 .artist .city{
-margin-top:4px;
-font-size:10px;
-opacity:0.6;
+margin-top:6px;
+font-size:11px;
+opacity:.65;
 }
 
-/* 配置修正 */
+/* 配置 */
 
 .a1{
-top:180px;
+top:170px;
 left:40px;
 }
 
 .a2{
 top:300px;
-right:40px;
+right:38px;
+animation-delay:2s;
 }
 
 .a3{
-bottom:230px;
-left:55px;
+bottom:220px;
+left:52px;
+animation-delay:4s;
 }
 
 .a4{
-bottom:210px;
-right:60px;
+bottom:205px;
+right:58px;
+animation-delay:1s;
 }
 
 /* signal */
@@ -257,49 +321,70 @@ right:60px;
 .signal{
 position:absolute;
 
-bottom:170px;
 left:50%;
+bottom:178px;
+
 transform:translateX(-50%);
 
-padding:20px 38px;
+padding:24px 42px;
 
 border-radius:999px;
 
 background:
 linear-gradient(
 180deg,
-rgba(255,255,255,0.16),
-rgba(255,255,255,0.05)
+rgba(255,255,255,.18),
+rgba(255,255,255,.04)
 );
 
 backdrop-filter:blur(30px);
 
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 0 50px rgba(255,255,255,.04);
 
 font-size:13px;
-letter-spacing:7px;
+letter-spacing:8px;
 
-z-index:10;
+z-index:30;
 }
 
-/* ナビ */
+.signal::before{
+content:'';
 
-.bottom-nav{
+position:absolute;
+inset:0;
+
+border-radius:999px;
+
+background:
+radial-gradient(circle at 30% 20%,
+rgba(255,255,255,.25),
+transparent 60%);
+}
+
+/* 下ナビ */
+
+.nav-wrap{
 position:absolute;
 
 bottom:48px;
 left:50%;
+
 transform:translateX(-50%);
 
 display:flex;
 gap:20px;
 
-z-index:10;
+z-index:30;
 }
 
 .nav{
-width:86px;
-height:86px;
+position:relative;
+
+width:92px;
+height:92px;
 
 border-radius:50%;
 
@@ -307,59 +392,92 @@ display:flex;
 justify-content:center;
 align-items:center;
 
+font-size:18px;
+
 background:
 linear-gradient(
 180deg,
-rgba(255,255,255,0.12),
-rgba(255,255,255,0.03)
+rgba(255,255,255,.12),
+rgba(255,255,255,.03)
 );
 
 backdrop-filter:blur(20px);
 
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,.08);
 
-font-size:18px;
+box-shadow:
+0 0 40px rgba(255,255,255,.03);
 }
 
-/* 星 */
+.nav::before{
+content:'';
 
-.star{
+position:absolute;
+inset:0;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle at 30% 20%,
+rgba(255,255,255,.2),
+transparent 60%);
+}
+
+/* 微粒子 */
+
+.particle{
 position:absolute;
 width:3px;
 height:3px;
 border-radius:50%;
 background:white;
-opacity:0.7;
+opacity:.7;
 }
 
-.s1{
-top:150px;
+.p1{
+top:170px;
 left:100px;
 }
 
-.s2{
-top:240px;
-right:80px;
+.p2{
+top:260px;
+right:100px;
 }
 
-.s3{
-bottom:260px;
-left:70px;
+.p3{
+bottom:240px;
+left:90px;
 }
 
-.s4{
+.p4{
 bottom:320px;
-right:120px;
+right:130px;
 }
 
 /* 回転 */
 
 @keyframes spin{
 from{
-transform:rotate(0deg);
+transform:translate(-50%,-50%) rotate(0deg);
 }
 to{
-transform:rotate(360deg);
+transform:translate(-50%,-50%) rotate(360deg);
+}
+}
+
+/* 浮遊 */
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0px);
 }
 }
 
@@ -368,7 +486,11 @@ transform:rotate(360deg);
 
 <body>
 
-<div class="screen">
+<div class="app">
+
+<div class="stars"></div>
+
+<div class="light"></div>
 
 <!-- orbit -->
 
@@ -376,52 +498,41 @@ transform:rotate(360deg);
 <div class="orbit orbit2"></div>
 <div class="orbit orbit3"></div>
 
-<!-- stars -->
-
-<div class="star s1"></div>
-<div class="star s2"></div>
-<div class="star s3"></div>
-<div class="star s4"></div>
-
 <!-- logo -->
 
 <div class="logo">
 UNDER
 </div>
 
+<!-- 中央 -->
+
+<div class="core">
+
+<div class="dot-white"></div>
+<div class="dot-black"></div>
+
+</div>
+
 <!-- artist -->
 
 <div class="artist a1">
 <div class="name">KOWICHI</div>
-<div class="city">Tokyo</div>
+<div class="city">Tokyo / Rapper</div>
 </div>
 
 <div class="artist a2">
 <div class="name">Lil Yuto</div>
-<div class="city">Tokyo</div>
+<div class="city">Tokyo / Rapper</div>
 </div>
 
 <div class="artist a3">
 <div class="name">VENOM</div>
-<div class="city">Osaka</div>
+<div class="city">Osaka / DJ</div>
 </div>
 
 <div class="artist a4">
 <div class="name">MARZY</div>
-<div class="city">Tokyo</div>
-</div>
-
-<!-- center -->
-
-<div class="center">
-
-<div class="yinyang">
-
-<div class="dot1"></div>
-<div class="dot2"></div>
-
-</div>
-
+<div class="city">Tokyo / Rapper</div>
 </div>
 
 <!-- signal -->
@@ -432,7 +543,7 @@ ENTER THE SIGNAL
 
 <!-- nav -->
 
-<div class="bottom-nav">
+<div class="nav-wrap">
 
 <div class="nav">
 探索
@@ -447,6 +558,13 @@ ENTER THE SIGNAL
 </div>
 
 </div>
+
+<!-- 粒子 -->
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
 
 </div>
 
